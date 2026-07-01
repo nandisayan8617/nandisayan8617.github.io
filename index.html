@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sayan Nandi — Chemistry Researcher</title>
+<meta name="description" content="Sayan Nandi — Chemistry researcher specialising in metal-organic frameworks, catalysis, and materials characterisation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFFFF;
+    --surface: #F3F1EC;
+    --ink: #202124;
+    --ink-soft: #5F6368;
+    --ink-faint: #8A8D91;
+    --heading-blue: #1F5C8B;
+    --amber: #B8722A;
+    --amber-dark: #8A551E;
+    --link-red: #B23A2E;
+    --border: #E3E1DA;
+    --serif: 'Playfair Display', serif;
+    --sans-title: 'Poppins', sans-serif;
+    --body: 'Roboto', sans-serif;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{ background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.65; }
+  a{ color: var(--link-red); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  ul{ list-style: none; }
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 0 40px; }
+
+  /* ---------- Nav ---------- */
+  header{
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(20,22,24,0.82);
+    backdrop-filter: blur(8px);
+  }
+  nav{
+    max-width: 1400px; margin: 0 auto;
+    padding: 16px 40px;
+    display:flex; align-items:center; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .site-name{ color:#fff; font-family: var(--body); font-size: 17px; letter-spacing: 0.01em; }
+  .nav-links{ display:flex; gap: 26px; flex-wrap: wrap; }
+  .nav-links button{
+    background:none; border:none; cursor:pointer;
+    font-family: var(--body); font-size: 14px; color: rgba(255,255,255,0.72);
+    padding: 6px 2px; transition: color 0.2s ease;
+  }
+  .nav-links button:hover{ color:#fff; }
+  .nav-links button.active{ color:#fff; font-weight: 700; }
+
+  /* ---------- Banner ---------- */
+  .banner{
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+    display:flex; align-items:center;
+  }
+  .banner svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .banner h1{
+    position: relative;
+    z-index: 2;
+    color:#fff;
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: clamp(38px, 5.5vw, 62px);
+    max-width: 900px;
+    padding: 0 40px;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+  }
+
+  /* ---------- Page content ---------- */
+  .page{ display: none; }
+  .page.active{ display: block; }
+  .content{ background: var(--surface); }
+  .content-inner{ padding: 64px 0 90px; }
+
+  h2.section-title{
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--heading-blue);
+    margin: 40px 0 14px;
+  }
+  h2.section-title:first-child{ margin-top: 0; }
+  p{ color: var(--ink); font-size: 15.5px; margin-bottom: 14px; max-width: 760px; }
+  p.muted{ color: var(--ink-soft); }
+
+  .bullets li{
+    position: relative; padding-left: 20px; margin-bottom: 8px;
+    color: var(--ink); font-size: 15px; max-width: 760px;
+  }
+  .bullets li::before{
+    content:'▪'; position:absolute; left:0; top:1px; color: var(--ink-faint); font-size: 12px;
+  }
+
+  .fact-box{ margin: 26px 0; }
+  .fact-box strong{ color: var(--ink); }
+
+  /* ---------- Experience entries ---------- */
+  .entry{ margin-bottom: 44px; max-width: 800px; }
+  .entry:last-child{ margin-bottom: 0; }
+  .entry-title{
+    font-family: var(--body); font-weight: 700; font-size: 19px; color: var(--heading-blue);
+    margin-bottom: 4px;
+  }
+  .entry-meta{ font-size: 13.5px; color: var(--ink-soft); margin-bottom: 10px; font-style: italic; }
+
+  /* ---------- Awards / list rows ---------- */
+  .award-row{ margin-bottom: 28px; }
+  .award-title{ font-family: var(--body); font-weight: 700; font-size: 17px; color: var(--heading-blue); }
+  .award-year{ font-size: 14px; color: var(--ink-soft); margin-top: 2px; }
+
+  /* ---------- Education ---------- */
+  .edu-row{ margin-bottom: 34px; max-width: 760px; }
+  .edu-title{ font-weight:700; font-size: 17px; color: var(--heading-blue); margin-bottom: 4px; }
+  .edu-inst{ font-size: 14.5px; color: var(--ink); margin-bottom: 4px; }
+  .edu-detail{ font-size: 14px; color: var(--ink-soft); }
+
+  /* ---------- Skill chips ---------- */
+  .skill-block{ margin-bottom: 28px; }
+  .skill-block h3{
+    font-family: var(--body); font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink-soft); margin-bottom: 10px; font-weight: 700;
+  }
+  .chip-row{ display:flex; flex-wrap:wrap; gap: 8px; }
+  .chip{
+    font-size: 13px; color: var(--ink); background: #fff; border: 1px solid var(--border);
+    padding: 5px 12px; border-radius: 4px;
+  }
+
+  /* ---------- Contact / footer of Home page ---------- */
+  .contact-block{ margin-top: 46px; padding-top: 30px; border-top: 1px solid var(--border); max-width: 760px; }
+  .contact-block h3{ font-family: var(--body); font-weight: 700; font-size: 16px; margin-bottom: 12px; }
+  .contact-block li{ margin-bottom: 6px; position: relative; padding-left: 20px; font-size: 15px; }
+  .contact-block li::before{ content:'▪'; position:absolute; left:0; top:1px; color: var(--ink-faint); font-size: 12px; }
+
+  footer{
+    text-align:center; padding: 30px 0; color: var(--ink-faint); font-size: 12.5px; background: var(--surface);
+  }
+
+  @media (max-width: 720px){
+    .banner{ height: 300px; }
+    .nav-links{ gap: 14px; }
+    .wrap{ padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="site-name">Sayan Nandi</div>
+    <div class="nav-links" id="navLinks">
+      <button data-page="home" class="active">Home</button>
+      <button data-page="research">Research Experience</button>
+      <button data-page="presentations">Presentations</button>
+      <button data-page="teaching">Teaching &amp; Mentorship</button>
+      <button data-page="skills">Skills</button>
+      <button data-page="awards">Awards</button>
+      <button data-page="academic">Academic Background</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= HOME ================= -->
+<section class="page active" id="page-home">
+  <div class="banner">
+    <svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#123B4E"/>
+          <stop offset="55%" stop-color="#1F5C6B"/>
+          <stop offset="100%" stop-color="#B8722A"/>
+        </linearGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#g1)"/>
+      <g stroke="rgba(255,255,255,0.28)" stroke-width="1.4" fill="none">
+        <path d="M980,60 L1080,110 L1080,210 L980,260 L880,210 L880,110 Z"/>
+        <path d="M1080,110 L1180,60 L1280,110 L1280,210 L1180,260 L1080,210"/>
+        <path d="M880,210 L780,260 L780,340"/>
+        <path d="M1180,260 L1180,340"/>
+      </g>
+      <g fill="rgba(255,255,255,0.55)">
+        <circle cx="980" cy="60" r="5"/><circle cx="1080" cy="110" r="5"/><circle cx="1080" cy="210" r="5"/>
+        <circle cx="980" cy="260" r="5"/><circle cx="880" cy="210" r="5"/><circle cx="880" cy="110" r="5"/>
+        <circle cx="1180" cy="60" r="5"/><circle cx="1280" cy="110" r="5"/><circle cx="1280" cy="210" r="5"/>
+        <circle cx="1180" cy="260" r="5"/><circle cx="780" cy="260" r="5"/><circle cx="780" cy="340" r="5"/>
+        <circle cx="1180" cy="340" r="5"/>
+      </g>
+    </svg>
+    <h1>About Me</h1>
+  </div>
+
+  <div class="content"><div class="wrap content-inner">
+
+    <p>Welcome to my homepage!</p>
+
+    <p>I am Sayan Nandi, an MSc Chemistry candidate at <strong>Savitribai Phule Pune University</strong>, researching metal-organic frameworks (MOFs), catalyst design, and materials characterisation. I have hands-on experience synthesising and characterising MOFs and inorganic composite materials, including catalyst systems that achieved <strong>100% selectivity</strong> in CO<sub>2</sub>-to-methanol conversion during a research exchange at the <a href="#" onclick="return false;">University of Stavanger</a>, Norway.</p>
+
+    <p>My work spans spectroscopic, electrochemical, and microscopy techniques — FT-IR, XRD, XPS, SEM, EIS — for structure-property analysis of composite and catalytic materials.</p>
+
+    <p>My research interests span over,</p>
+    <ul class="bullets">
+      <li><strong>Metal-organic frameworks (MOFs)</strong></li>
+      <li><strong>Heterogeneous catalysis</strong></li>
+      <li><strong>Materials characterisation &amp; spectroscopy</strong></li>
+    </ul>
+
+    <p>I completed my B.Sc. (Honours) in Chemistry at New Alipore College, University of Calcutta (class of 2023).</p>
+
+    <p>Besides research, I enjoy tutoring and mentoring younger students, travelling, and following developments in sustainable chemistry. I'm driven to pursue research addressing real-world sustainability challenges, with a long-term goal of building an academic career that combines impactful research with training and mentoring the next generation of scientists.</p>
+
+    <div class="contact-block">
+      <h3>Contact Details:</h3>
+      <ul>
+        <li><strong>Location:</strong> Kolkata, West Bengal, India</li>
+        <li><strong>Email:</strong> nandisayan2000 [at] gmail [dot] com</li>
+        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sayan-nandi" target="_blank" rel="noopener">linkedin.com/in/sayan-nandi</a></li>
+      </ul>
+    </div>
+
+  </div></div>
+</section>
+
+<!-- ================= RESEARCH EXPERIENCE ================= -->
+<section class="page" id="page-research">
+  <div class="banner">
+    <svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="s1" cx="30%" cy="40%" r="70%">
+          <stop offset="0%" stop-color="#E7A94A"/>
+          <stop offset="60%" stop-color="#9C5A22"/>
+          <stop offset="100%" stop-color="#3E2A16"/>
+        </radialGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#s1)"/>
+      <g fill="rgba(255,220,150,0.55)">
+        <circle cx="220" cy="120" r="70"/>
+        <circle cx="360" cy="230" r="46"/>
+        <circle cx="480" cy="90" r="34"/>
+        <circle cx="600" cy="200" r="58"/>
+        <circle cx="120" cy="290" r="30"/>
+      </g>
+      <g fill="rgba(255,255,255,0.18)">
+        <circle cx="720" cy="150" r="90"/>
+        <circle cx="900" cy="280" r="40"/>
+      </g>
+    </svg>
+    <h1>Research Experience</h1>
+  </div>
+
+  <div class="content"><div class="wrap content-inner">
+
+    <div class="entry">
+      <div class="entry-title">Master's Thesis Research Project — 2025–2026</div>
+      <div class="entry-meta">Supervisor: Prof. Nirmalya Ballav, Chair, Department of Chemistry, IISER Pune</div>
+      <ul class="bullets">
+        <li>Identified that in-situ reduction of graphene oxide during Cu-PBA synthesis drives interfacial charge transfer between composite layers, enhancing I-V response and charge storage capacity relative to pristine Cu-PBA and physically mixed controls.</li>
+        <li>Confirmed through spectroscopic (FT-IR, Raman, XPS, EPR, UV-Vis), microscopic (SEM), and electrical/electrochemical (I-V, Hall, CV, GCD, EIS) characterisation.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Student Exchange Research Programme — 2025</div>
+      <div class="entry-meta">University of Stavanger, Norway — Supervisors: Dr. Sachin Chavan, Dr. Zhixin Yu</div>
+      <ul class="bullets">
+        <li>Achieved 100% selectivity for CO2 hydrogenation to methanol using a MOF-based catalyst system.</li>
+        <li>Synthesised uniformly distributed 5 nm copper nanoparticles with no detectable oxidation or sintering — addressing two persistent stability challenges in heterogeneous catalyst design.</li>
+        <li>Synthesised MOFs (Ce UiO-66, Ce UiO-66 bpy) and Cu/CuZn nanoparticles for catalytic applications, characterised via IR, NMR, XRD, TGA, BET, and SEM.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Bachelor's Dissertation Project — 2023</div>
+      <div class="entry-meta">University of Calcutta — Supervisor: Dr. Rupa Mukhopadhyay</div>
+      <ul class="bullets">
+        <li>Conducted a literature review on sustainable seawater desalination and purification techniques, focusing on reverse osmosis (RO) and membrane-based separation processes.</li>
+        <li>Evaluated enhancement strategies for membrane efficiency and brine valorisation as approaches to addressing global freshwater scarcity.</li>
+      </ul>
+    </div>
+
+  </div></div>
+</section>
+
+<!-- ================= PRESENTATIONS ================= -->
+<section class="page" id="page-presentations">
+  <div class="banner">
+    <svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#0F3B4A"/>
+          <stop offset="100%" stop-color="#1F7A8C"/>
+        </linearGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#g2)"/>
+      <path d="M0,300 L100,290 L160,150 L210,320 L260,120 L320,300 L420,290 L500,180 L560,310 L640,140 L720,300 L820,285 L900,200 L960,300 L1040,150 L1120,300 L1220,285 L1300,190 L1400,290"
+            fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+    </svg>
+    <h1>Presentations</h1>
+  </div>
+
+  <div class="content"><div class="wrap content-inner">
+
+    <h2 class="section-title">Conferences, Symposia &amp; Posters</h2>
+
+    <div class="award-row">
+      <div class="award-title">Frontiers in Catalysis: Bridging Spectroscopy, Theory and Reactivity</div>
+      <div class="award-year">Poster presenter — The Royal Society of Chemistry, IIT Bombay, 2026. Presented in the presence of Prof. Bert Weckhuysen (Utrecht University) and Prof. Karen Wilson (Griffith University).</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">ChemSci 2025: Leaders in the Field Symposium</div>
+      <div class="award-year">The Royal Society of Chemistry, IISER Pune, 2025</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">The 4th International Online Conference on Materials</div>
+      <div class="award-year">MDPI Materials, 2025</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">The 1st International Online Conference on Separations</div>
+      <div class="award-year">MDPI Separations, 2025</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">Critical Metal Recovery and Separation Symposium</div>
+      <div class="award-year">University of Stavanger, Research Council of Norway, 2025</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">Research Trends in Chemical Sciences</div>
+      <div class="award-year">Chemical Research Society of India, Pune Chapter, 2025</div>
+    </div>
+
+    <h2 class="section-title">Certifications &amp; Training</h2>
+    <ul class="bullets">
+      <li>ACS Reviewer Lab Certification, American Chemical Society, 2026</li>
+      <li>Certified Peer Reviewer Course, Basics of Peer Review, Elsevier, 2026</li>
+      <li>Student Member, Royal Society of Chemistry (RSC), 2025–2026</li>
+      <li>Density Functional Theory (DFT) in Computational Chemistry, IIT Madras (instructed by Prof. Sourav Pal, Ashoka University), 2025</li>
+      <li>CCS and CCUS Conference, Stavanger, Norway, Energy Transition Norway, EU, 2025</li>
+      <li>Hands-on Training in Spectroscopic Methods (IR, XRD, UV-Vis), Dept. of Chemistry, Ramkrishna Mission Vidyamandira, 2022</li>
+    </ul>
+
+  </div></div>
+</section>
+
+<!-- ================= TEACHING & MENTORSHIP ================= -->
+<section class="page" id="page-teaching">
+  <div class="banner">
+    <svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7A3E1D"/>
+          <stop offset="100%" stop-color="#C0793A"/>
+        </linearGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#g3)"/>
+      <g stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none">
+        <rect x="920" y="60" width="380" height="260" rx="6"/>
+        <line x1="960" y1="120" x2="1240" y2="120"/>
+        <line x1="960" y1="170" x2="1200" y2="170"/>
+        <line x1="960" y1="220" x2="1260" y2="220"/>
+      </g>
+    </svg>
+    <h1>Teaching &amp; Mentorship</h1>
+  </div>
+
+  <div class="content"><div class="wrap content-inner">
+
+    <div class="entry">
+      <div class="entry-title">Chemistry Instructor</div>
+      <div class="entry-meta">Muktangan Exploratory Science Centre, Pune — Aug 2025 – Jan 2026</div>
+      <ul class="bullets">
+        <li>Guided students preparing for the Homi Bhabha Young Scientist Competition.</li>
+        <li>Mentored students in chemistry theory and practical laboratory work.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Science and Chemistry Tutor</div>
+      <div class="entry-meta">Private Coaching Institute, Kolkata — 2021 – 2024</div>
+      <ul class="bullets">
+        <li>Taught middle school students foundational science concepts.</li>
+        <li>Guided secondary school STEM students in preparation for board examinations.</li>
+        <li>Supported senior secondary STEM students with chemistry coursework.</li>
+      </ul>
+    </div>
+
+  </div></div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="page" id="page-skills">
+  <div class="banner">
+    <svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2C3E42"/>
+          <stop offset="100%" stop-color="#5C7A80"/>
+        </linearGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#g4)"/>
+      <g stroke="rgba(255,255,255,0.3)" stroke-width="1.4" fill="none">
+        <polygon points="1000,80 1080,125 1080,215 1000,260 920,215 920,125"/>
+        <polygon points="1140,140 1200,175 1200,245 1140,280 1080,245 1080,175"/>
+        <polygon points="1220,60 1280,95 1280,165 1220,200 1160,165 1160,95"/>
+      </g>
+    </svg>
+    <h1>Skills</h1>
+  </div>
+
+  <div class="content"><div class="wrap content-inner">
+
+    <div class="skill-block">
+      <h3>Spectroscopy &amp; Analysis</h3>
+      <div class="chip-row">
+        <span class="chip">FT-IR</span><span class="chip">UV-Vis</span><span class="chip">NMR</span>
+        <span class="chip">Raman</span><span class="chip">EPR</span><span class="chip">XPS</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <h3>Electrochemistry</h3>
+      <div class="chip-row">
+        <span class="chip">Cyclic Voltammetry</span><span class="chip">GCD</span>
+        <span class="chip">EIS</span><span class="chip">LSV</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <h3>Materials Characterisation</h3>
+      <div class="chip-row">
+        <span class="chip">XRD</span><span class="chip">SEM</span>
+        <span class="chip">TGA-DSC</span><span class="chip">I-V Measurements</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <h3>Chromatography</h3>
+      <div class="chip-row">
+        <span class="chip">TLC</span><span class="chip">Column Chromatography</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <h3>Software</h3>
+      <div class="chip-row">
+        <span class="chip">Origin</span><span class="chip">FORTRAN 77</span>
+        <span class="chip">ChemDraw</span><span class="chip">QtiPlot</span><span class="chip">LaTeX</span><span class="chip">Microsoft Office</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <h3>Languages</h3>
+      <div class="chip-row">
+        <span class="chip">English</span><span class="chip">Bengali</span>
+        <span class="chip">Hindi</span><span class="chip">Marathi</span>
+      </div>
+    </div>
+
+  </div></div>
+</section>
+
+<!-- ================= AWARDS ================= -->
+<section class="page" id="page-awards">
+  <div class="banner">
+    <svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#C89355"/>
+          <stop offset="50%" stop-color="#8A5A2E"/>
+          <stop offset="100%" stop-color="#3B2A18"/>
+        </linearGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#g5)"/>
+      <ellipse cx="300" cy="180" rx="500" ry="220" fill="rgba(255,255,255,0.06)"/>
+    </svg>
+    <h1>Awards</h1>
+  </div>
+
+  <div class="content"><div class="wrap content-inner">
+
+    <div class="award-row">
+      <div class="award-title">CSIR-NCL Fellowship for Academic Excellence</div>
+      <div class="award-year">National Chemical Laboratory, Pune, India — 2025</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">Qualified IIT GATE 2025 and IIT JAM 2024</div>
+      <div class="award-year">India's national postgraduate and doctoral-entrance examinations, each with a single-digit-percentage qualification rate among hundreds of thousands of applicants.</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">Ranked 5th Nationally, WBJEE PUBDET Entrance Examination</div>
+      <div class="award-year">2021</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">Ranked 15th, Savitribai Phule Pune University MSc Entrance Examination</div>
+      <div class="award-year">2024</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">Prize Winner, Prof. H.J. Arnikar Inter-College Lecture Competition</div>
+      <div class="award-year">Department of Chemistry, Savitribai Phule Pune University, 2025</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-title">Third Prize, E-Poster Competition</div>
+      <div class="award-year">Indian Society for Analytical Sciences, Pune Chapter, 2025</div>
+    </div>
+
+  </div></div>
+</section>
+
+<!-- ================= ACADEMIC BACKGROUND ================= -->
+<section class="page" id="page-academic">
+  <div class="banner">
+    <svg viewBox="0 0 1400 380" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="g6" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1B1E22"/>
+          <stop offset="100%" stop-color="#3A3F46"/>
+        </linearGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#g6)"/>
+      <g fill="rgba(255,255,255,0.14)">
+        <path d="M1150,140 L1250,180 L1150,220 L1050,180 Z"/>
+        <rect x="1140" y="220" width="20" height="60"/>
+      </g>
+    </svg>
+    <h1>Academic Background</h1>
+  </div>
+
+  <div class="content"><div class="wrap content-inner">
+
+    <div class="edu-row">
+      <div class="edu-title">Master of Science in Chemistry (Inorganic) — 2024–2026</div>
+      <div class="edu-inst">Savitribai Phule Pune University, Pune, Maharashtra, India</div>
+      <div class="edu-detail">CGPA Obtained: 7.64/10</div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-title">Bachelor of Science (Honours) in Chemistry — 2020–2023</div>
+      <div class="edu-inst">New Alipore College, University of Calcutta, Kolkata, West Bengal, India</div>
+      <div class="edu-detail">CGPA Obtained: 7.65/10</div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-title">ISC, Higher Secondary Education — 2019</div>
+      <div class="edu-inst">Vivekananda Mission School, Kolkata, West Bengal, India</div>
+      <div class="edu-detail">Score: 84%</div>
+    </div>
+
+    <div class="edu-row">
+      <div class="edu-title">ICSE, Secondary Education — 2017</div>
+      <div class="edu-inst">Vivekananda Mission School, Kolkata, West Bengal, India</div>
+      <div class="edu-detail">Score: 92%</div>
+    </div>
+
+    <p class="muted" style="margin-top:36px; font-size:13px;">References available on request.</p>
+
+  </div></div>
+</section>
+
+<footer>Sayan Nandi — Kolkata, West Bengal, India</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.nav-links button');
+  const pages = document.querySelectorAll('.page');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.page;
+      pages.forEach(p => p.classList.toggle('active', p.id === 'page-' + target));
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
